@@ -1,0 +1,51 @@
+{% extends 'layouts/_base.html' %} {% load crispy_forms_tags %} {% load fontawesome_5 %}{% block title %}BigShop | Adresse{% endblock title%}{% block content %}
+
+<div class="container mt-5">
+    <h2 class="mb-4" style="text-align: center;">Adresse de livraison</h2>
+    <div class="shipping-address-grid">
+
+        <div class="card mb-5" style="height: 150px">
+            <div class="card-body">
+                <h6 class="title">Commande</h6>
+            </div>
+            <div class="card-footer">
+                <span class="float-left"><b>Total :</b></span>
+                <span class="float-right"><b>{{ order_total | floatformat:0 }} FCFA</b></span>
+            </div>
+
+
+            <a href="/" class="shopping mt-6"><i class="mr-2">{% fa5_icon 'hand-point-left' 'fas' %}</i>Continuer vos achats</a>
+        </div>
+
+
+        {% if savedAddress %}
+
+        <div class="card mb-5" style="height: 350px">
+            <h6 class="title">Adresse precedente</h6>
+            <div class="card-body">
+                <p><b>Pays :</b> {{ savedAddress.address }}</p>
+                <p><b>Ville :</b> {{ savedAddress.city }}</p>
+                <p><b>Code postal :</b> {{ savedAddress.zipcode }}</p>
+                <p><b>Villa n° :</b> {{ savedAddress.landmark }}</p>
+            </div>
+            <div class="card-body">
+                <a href="" class="shopping btn-center"><i class="mr-2">{% fa5_icon 'hand-point-right' 'fas' %}</i>Continuer avec cette adresse</a>
+            </div>
+        </div>
+        {% endif %}
+
+        <div class="card mb-5" style="height: auto">
+            <h6 class="title">Veuillez saisir votre adresse</h6>
+            <div class="card-body">
+                <form method="POST">
+                    {% csrf_token %} {{ form | crispy}}
+                    <button type="submit" class="btn  ">Continuer<i class="ml-2">{% fa5_icon 'hand-point-right' 'fas' %}</i></button>
+                </form>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+
+{% endblock %}

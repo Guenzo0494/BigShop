@@ -1,0 +1,44 @@
+{% extends 'layouts/_base.html' %}
+ {% load crispy_forms_tags %} 
+ {% load fontawesome_5 %} 
+ {% block title %}BigShop | Creer compte{% endblock title%} 
+ {% block content %} 
+ {% load i18n %}
+
+    <div class="main-grid">
+        
+        <div class="grid-left">
+            <h4 class="signup-title"> Creer un compte</h4>
+
+            <form class="signup" id="signup_form" method="post" action="{% url 'account_signup' %}">
+                {% csrf_token %} 
+                {{ form.last_name | as_crispy_field}}
+                {{ form.first_name | as_crispy_field }}
+                {{ form.email | as_crispy_field }}
+                {{ form.telephone | as_crispy_field }}
+                {{ form.password1 | as_crispy_field }}
+                {{ form.password2 | as_crispy_field }}
+                {% if redirect_field_value %}
+                <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" /> 
+                {% endif %}
+                <button class="btn-lg" type="submit"> Valider &raquo;</button>
+            </form>
+
+        </div>
+        <div class="grid-right">
+            <div class="text-info">
+                <p>Si vous avez deja un compte veuillez cliquer sur ce bouton pour vous connecter.</p>
+            </div>
+            <a href="{{ login_url }}"> <button class="se-connecter" type="submit"> Se connecter &raquo;</button></a>
+            <!-- <p>Already have an account? Then please <a href="{{ login_url }}">sign in</a>.</p> -->
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+{% endblock content %}

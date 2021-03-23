@@ -1,0 +1,86 @@
+{% load cart_tag %} 
+{% load fontawesome_5 %}
+
+
+
+    <div class="call-number">
+        <marquee behavior="alternate" direction="">
+            <h5>Besoin d'aide pour commander? Appelez au <span><i class="nav-icon">{% fa5_icon 'phone-volume' 'fas' %}</i> 33 835 25 05</span></h5>
+        </marquee>
+    </div>
+
+    <!-- BOOTSTRAP NAVBAR -->
+    <div class="header">
+        <a href="/" class="site-name__header">BigShop</a>
+        <div class="btn-toggle__header">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        
+        <div class="box__header">
+            <form action="{% url 'mainapp:prod_by_category' %}" class="search-form__box">
+                <input type="text" name="key_word" placeholder="Recherchez un produit, une categorie ou une marque">
+                <button class="btn-search" type="submit">Recherchez</button>
+            </form>
+    
+            {% if user.is_authenticated %}
+            <nav>
+                <ul>
+                    <li class="nav-item dropdown">
+                        <a class="dropdown" href="#"><i class="fa fa-user"></i>Bonjour, {{request.user.first_name}} <i class="fa fa-caret-down"></i></i></a>
+                        <!-- dropdown menu -->
+                        <!-- <i class="dropdown-menu fa fa-caret-up"></i> -->
+                        <div class="dropdown-menu">
+                            
+                            <a href="" class="dropdown-item"><i class="fa-dropdown fa fa-user"></i>Votre compte</a>
+                            <hr class="diviser-dropdown">
+                            <a href="" class="dropdown-item"><i class="fa-dropdown fa fa-user"></i>Vos commandes</a>
+                            <hr class="diviser-dropdown">
+                            <a href="{% url 'account_logout' %}" class="dropdown-item"><i class="fa-dropdown fa fa-user"></i>Se deconnecter</a>
+                        </div>
+                    </li>
+    
+                    <li class="nav-item">
+                        <a href="{% url 'mainapp:cart-home' %}">Panier<i class="fa fa-cart-plus"><span></span></i></a>
+                       
+                    </li>
+                </ul>
+    
+            </nav>
+            {% else %}
+            <nav>
+                <ul>
+                    <li class="nav-item dropdown">
+                        <a class="dropdown" href="#"><i class="fa fa-user"></i>Se connecter <i class="fa fa-caret-down"></i></i></a>
+                        <!-- dropdown menu -->
+                        <!-- <i class="dropdown-menu fa fa-caret-up"></i> -->
+                        <div class="dropdown-menu">
+                            
+                            <a href="" class="dropdown-item"><i class="fa-dropdown fa fa-user"></i>Votre compte</a>
+                            <hr class="diviser-dropdown">
+                            <a href="" class="dropdown-item"><i class="fa-dropdown fa fa-user"></i>Vos commandes</a>
+                            <hr class="diviser-dropdown">
+                            <a href="{% url 'account_login' %}" class="dropdown-item"><i class="fa-dropdown fa fa-user"></i>Se connecter</a>
+                        </div>
+                    </li>
+    
+                    <li class="nav-item">
+                        <a href="{% url 'account_login' %}">Panier<i class="fa fa-cart-plus"></i></a>
+                       
+                    </li>
+                </ul>
+    
+            </nav>
+
+            {% endif %}
+        </div>
+    </div>
+
+   
+
+
+
+
+
+

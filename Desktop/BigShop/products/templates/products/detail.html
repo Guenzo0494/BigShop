@@ -1,0 +1,49 @@
+{% extends 'layouts/_base.html' %}
+{% load fontawesome_5 %}
+{% block title %}BigShop | Detail Produit{% endblock title%}
+
+{% block content%}
+
+<div class="btn-group">
+    <a href="/" class="return"><i class="hand-icon-left">{% fa5_icon 'hand-point-left' 'fas' %}</i>Continuer vos achats</a>
+    <a href="{% url 'mainapp:cart-home' %}" class="cart-page">Voir votre panier<i class="hand-icon-right">{% fa5_icon 'hand-point-right' 'fas' %}</i></a>
+</div>
+
+    
+<div class="produit-detail-box">
+
+    <div class="header__produit-detail">
+        <i class="share">{% fa5_icon 'share-alt' 'fas' %}</i>
+        <i class="heart">{% fa5_icon 'heart' 'fas' %}</i>
+        <img src="{{product.mainimage.url}}" style="width:90%; height: 90%;" class="" alt="{{product.name}}">
+    </div>
+
+    <div class="body__produit-detail">
+        <h3>{{ product.name}}</h3>
+
+        <div class="description">
+            <p>{{product.detail_text}}</p>
+        </div>
+
+        <div class="price">{{product.price | floatformat:0}} FCFA</div>
+
+        <form action="" method="post">
+            {% csrf_token %}
+            <div class="quantite">
+                Quantite:
+                <input type="number" min="1" step="1" value="1" name="qte">
+            </div>
+            <button class="btn" type="submit "><i class="hand-icon-left">{% fa5_icon 'shopping-cart' 'fas' %}</i>Acheter</button>
+        </form>
+    </div>
+
+
+</div>
+
+
+
+
+
+
+
+{% endblock content %}

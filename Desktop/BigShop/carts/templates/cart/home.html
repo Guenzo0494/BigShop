@@ -1,0 +1,43 @@
+{% extends 'layouts/_base.html' %}{% load fontawesome_5 %}{% block title %}BigShop | Panier{% endblock title%} {% block content %}
+<div class="container">
+
+    <h2 class="cart-page-title">Panier</h2>
+
+
+    <div class="cart">
+        <div class="cart-prod-title">
+            <span></span>
+            <span>Aticle</span>
+            <span>Prix Uniaire</span>
+            <span>Quantite</span>
+            <span>Total</span>
+        </div>
+        <hr class="cart-hr"> {% for cart in carts %}
+
+        <div class="cart-prod">
+            <img src="{{cart.item.mainimage.url}}" style="width:60%; height: 60%;" alt="">
+            <span>{{cart.item.name}}</span>
+            <span>{{cart.item.price | floatformat:0}} FCFA</span>
+            <div class="qte">
+                <a class="mr-2" href="{% url 'mainapp:decrease-cart' cart.item.slug %}"><span class="badge badge-light"><i class="fas fa-minus"></i></span></a> {{ cart.quantity }}
+                <a class="ml-2" href="{% url 'mainapp:increase-cart' cart.item.slug %}"><span class="badge badge-light"><i class="fas fa-plus"></i></span></a>
+            </div>
+            <span>{{cart.get_total | floatformat:0}} FCFA</span>
+
+        </div>
+        {% endfor %}
+        <hr class="cart-hr">
+        <div class="order-total">
+            <span>Total :</span>
+            <span>{{ order.get_totals | floatformat:0}} FCFA</span>
+        </div>
+    </div>
+
+    <div class="cart-page-link">
+        <a href="/" class="shopping"><i class="mr-2">{% fa5_icon 'hand-point-left' 'fas' %}</i>Poursuivre vos achats</a>
+        <a href="{% url 'checkout:index' %}" class="checkout">Finaliser votre commande<i class="ml-2">{% fa5_icon 'hand-point-right' 'fas' %}</i></a>
+    </div>
+
+</div>
+
+{% endblock %}

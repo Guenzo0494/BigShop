@@ -1,0 +1,50 @@
+{% extends 'layouts/_base.html' %}
+{% load fontawesome_5 %}
+
+{% block title %} categorie | Produit {% endblock title %}
+
+{% block content %}
+
+<span class="category-title" >{{cat.title}}</span>
+
+
+<div class="grid-catalogue2">
+
+    
+    {% for product in page_obj %}
+
+    <a href="{% url 'mainapp:product-detail' product.slug %}">
+        <div class="card">
+            <img src="{{product.mainimage.url}}" style="width:100%; height: 100%;" class="card-img-top" alt="{{ product.name }}">
+
+            <div class="card-body">
+                <p class="card-title"> {{ product.name }}</p>
+                <p class="card-price">{{ product.price | floatformat:0 }} FCFA</p>
+            </div>
+        </div>
+    </a>
+    {% endfor %} 
+
+</div>
+
+<div class="pagination">
+    <span class="step-links">
+        {% if page_obj.has_previous %}
+            <a href="?page=1">&laquo; first</a>
+            <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+            
+        </span>
+
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}">next</a>
+            <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+        {% endif %}
+    </span>
+</div>
+
+
+{% endblock content %}
