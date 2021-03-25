@@ -1,9 +1,11 @@
-{% extends 'layouts/_base.html' %}{% load fontawesome_5 %}{% block title %}BigShop | Panier{% endblock title%} {% block content %}
+{% extends 'layouts/_base.html' %}
+{% load cart_tag %}
+{% load fontawesome_5 %}
+{% block title %}BigShop | Panier{% endblock title%} 
+{% block content %}
 <div class="container">
 
     <h2 class="cart-page-title">Panier</h2>
-
-
     <div class="cart">
         <div class="cart-prod-title">
             <span></span>
@@ -12,21 +14,22 @@
             <span>Quantite</span>
             <span>Total</span>
         </div>
-        <hr class="cart-hr"> {% for cart in carts %}
+        <hr class="cart-hr"> 
+        {% for cart in carts %}
 
         <div class="cart-prod">
-            <img src="{{cart.item.mainimage.url}}" style="width:60%; height: 60%;" alt="">
-            <span>{{cart.item.name}}</span>
-            <span>{{cart.item.price | floatformat:0}} FCFA</span>
+            <img src="{{cart.item.mainimage.url}}" style="width:60%; height: auto;" alt="">
+            <span class="name__card-prod">{{cart.item.name}}</span>
+            <span class="price__card-prod">{{cart.item.price | floatformat:0}} FCFA</span>
             <div class="qte">
                 <a class="mr-2" href="{% url 'mainapp:decrease-cart' cart.item.slug %}"><span class="badge badge-light"><i class="fas fa-minus"></i></span></a> {{ cart.quantity }}
                 <a class="ml-2" href="{% url 'mainapp:increase-cart' cart.item.slug %}"><span class="badge badge-light"><i class="fas fa-plus"></i></span></a>
             </div>
-            <span>{{cart.get_total | floatformat:0}} FCFA</span>
+            <span class="total__prod-card">{{cart.get_total | floatformat:0}} FCFA</span>
 
         </div>
         {% endfor %}
-        <hr class="cart-hr">
+        <hr class="">
         <div class="order-total">
             <span>Total :</span>
             <span>{{ order.get_totals | floatformat:0}} FCFA</span>

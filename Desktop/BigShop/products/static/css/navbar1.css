@@ -94,6 +94,7 @@ form.search-form__box > button{
 
 .box__header > nav > ul > li.nav-item{
     margin: 0px 25px;
+    position: relative;
 }
 
 .box__header > nav > ul > li.nav-item > a{
@@ -125,6 +126,16 @@ a.dropdown > i.fa.fa-caret-down{
     
 }
 
+span.item-count{
+    background: orange;
+    font-size: 10px;
+    font-weight: bold;
+    padding: 1px 4px;
+    border-radius: 50%;
+    position: absolute;
+    top: -7px;
+    left: 85px;
+}
 
 /* for dropdown menu */
 nav > ul > li.nav-item.dropdown{

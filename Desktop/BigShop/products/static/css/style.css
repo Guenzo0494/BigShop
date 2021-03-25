@@ -413,10 +413,57 @@ hand-icon-left {
 
 /* CSS for cart page */
 
+@media screen and (max-width: 768px){
+    .cart {
+        width: auto !important;
+        margin-left: 0px;
+    }
+
+    .cart-prod-title, hr.cart-hr, span.price__card-prod{
+        display: none !important;
+        
+    }
+
+    .cart > .cart-prod{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        margin-top: 15px;
+    }
+
+    .cart-prod > img{
+        width: 30% !important;
+        height: auto;
+        flex-basis: 40%;
+    }
+
+    .cart-prod > span.name__card-prod{
+        flex-basis: 50%;
+        font-size: 25px;
+    }
+
+    span.total__prod-card{
+        font-size: 25px;
+        margin: 15px;
+    }
+
+    .cart-prod > .qte{
+        font-size: 25px;
+        margin: 15px;
+    }
+
+    .cart > .order-total{
+        width: auto;
+        
+    }
+}
+
 .cart-page-title {
     text-align: center;
     margin: 20px 0px;
 }
+
 
 .cart {
     padding-top: 10px;
@@ -505,14 +552,14 @@ a.checkout:hover {
     transition: ease-in-out .2s;
 }
 
-@media screen and (max-width: 992px){
+@media screen and (max-width: 992px) and (min-width: 768px){
     .cart {
         width: 110%;
         margin-left: -35px;
     }
 }
 
-@media screen and (max-width: 768px){
+/* @media screen and (max-width: 768px){
     .cart {
         width: 139%;
         margin-left: -94px;
@@ -524,7 +571,7 @@ a.checkout:hover {
         width: auto;
         margin-left: 0;
     }
-}
+} */
 
 
 /* CSS for chipping address */
@@ -684,5 +731,191 @@ button.btn-lg:hover{
 input[type=checkbox], input[type=radio] {
     box-sizing: border-box;
     padding: 0;
-    visibility: hidden;
+    visibility: visible;
+}
+
+
+/* CSS for login page */
+
+.container-login-box{
+    display: flex;
+    justify-content: space-between;
+    /* border: 1px solid red; */
+    margin-top: 25px;
+}
+
+form.login{
+    width: 400px;
+    height: auto;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    border-radius: 5px;
+    margin-top: 10px;
+    margin-right: 10px;
+    border: 1px solid #007bff;
+    box-shadow: 0px 0px 8px rgba(0, 0, 0, .7);
+
+}
+
+form.login > h4 {
+    text-align: center;
+    font-size: 22px;
+    color:#007bff;
+    font-weight: bold;
+    margin-bottom: 16px;
+    border: 1px solid;
+    padding: 10px 15px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 8px rgba(0, 0, 0, .7);
+}
+
+form.login > span{
+    margin-bottom: 10px;
+}
+
+form > input#id_login,
+form > input#id_password{
+    border-radius: 5px !important;
+    padding: 7px 20px !important;
+    margin-bottom: 25px !important;
+    background: #fff;
+    
+}
+
+form > input#id_login:focus,
+form > input#id_password:focus{
+    outline: none;
+    background: #fff;
+    border: 1px solid #007bff !important;
+    box-shadow: 0px 0px 8px rgba(0, 0, 0, .7);
+    transition: all .3s ease-in-out;
+}
+
+a.forget-password{
+    margin-bottom: 10px;
+}
+
+button.btn-login{
+    display: flex;
+    align-items: center;
+    font-size: 15px;
+    text-transform: uppercase;
+    color:#fff;
+    background: #007bff;
+    font-weight: bold;
+    margin-bottom: 16px;
+    border: 1px solid;
+    padding: 10px 15px;
+    padding-right: 100px;
+    border-radius: 5px;
+}
+
+button.btn-login:hover{
+    box-shadow: 0px 0px 8px rgba(0, 0, 0, .7);
+}
+
+
+button.btn-login > i{
+    margin-right: auto;
+}
+
+.container-login-box > .right{
+    margin-top: 10px;
+    width: 500px ;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 20px;
+    border-radius: 5px;
+    border: 1px solid #007bff;
+    box-shadow: 0px 0px 8px rgba(0, 0, 0, .7);
+
+}
+
+.right > .top__right > span{
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+.right > .buttons > .btn-signup-link{
+    display: flex;
+    align-items: center;
+    text-align: center;
+    font-size: 15px;
+    text-transform: uppercase;
+    color:#fff;
+    background: #007bff;
+    font-weight: bold;
+    margin-bottom: 16px;
+    border: 1px solid;
+    padding: 10px 15px;
+    border-radius: 5px;
+}
+
+.right > .buttons > .btn-signup-link:hover{
+    box-shadow: 0px 0px 8px rgba(0, 0, 0, .7);
+}
+
+.right > .buttons > .signup-facebook{
+    display: flex;
+    align-items: center;
+    text-align: center;
+    font-size: 15px;
+    text-transform: uppercase;
+    color:#fff;
+    background: #007bff;
+    font-weight: bold;
+    margin-bottom: 16px;
+    border: 1px solid;
+    padding: 10px 15px;
+    border-radius: 5px;
+    
+}
+
+.right > .buttons > .signup-facebook:hover{
+    box-shadow: 0px 0px 8px rgba(0, 0, 0, .7);
+}
+
+
+.right i{
+    margin-right: 25px;
+}
+
+@media screen and (max-width: 992px){
+    .container-login-box{
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .container-login-box > form{
+        flex-basis: 70%;
+        margin-bottom: 20px;
+    }
+
+    .container-login-box > .right{
+        flex-basis: 70%;
+    }
+}
+
+@media screen and (max-width: 768px){
+    .container-login-box{
+        flex-wrap: wrap;
+    }
+    
+    .container-login-box > form{
+        flex-basis: 100%;
+        width: auto;
+        margin-bottom: 30px;
+    }
+
+    .container-login-box > .right{
+        flex-basis: 100%;
+        width: auto;
+    }
 }
